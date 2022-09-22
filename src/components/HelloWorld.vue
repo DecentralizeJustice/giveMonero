@@ -1,35 +1,66 @@
 <template>
-    <div class="p-fluid">
-        <div class="card">
-            <h5>Basic</h5>
-            <Chips v-model="value1" />
+  <q-layout view="hHh lpR fFf">
 
-            <h5>Comma Separator</h5>
-            <Chips v-model="value2" separator="," />
+    <q-header elevated class="bg-primary text-white" height-hint="98">
+      <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-            <h5>Template</h5>
-            <Chips v-model="value3">
-                <template #chip="slotProps">
-                    <div>
-                        <span>{{slotProps.value}} - (active) </span>
-                        <i class="pi pi-user-plus" style="font-size: 14px"></i>
-                    </div>
-                </template>
-            </Chips>
-        </div>
-    </div>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          </q-avatar>
+          Give Monero
+        </q-toolbar-title>
+
+        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+      </q-toolbar>
+    </q-header>
+
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+      <!-- drawer content -->
+    </q-drawer>
+
+    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
+      <!-- drawer content -->
+    </q-drawer>
+
+    <q-page-container>
+
+    </q-page-container>
+
+    <q-footer elevated class="bg-grey-8 text-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          </q-avatar>
+          <div>Title</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
+
+  </q-layout>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
-    setup() {
-        const value1 = ref();
-        const value2 = ref();
-        const value3 = ref();
+  setup () {
+    const leftDrawerOpen = ref(false)
+    const rightDrawerOpen = ref(false)
 
-        return { value1, value2, value3 }
+    return {
+      leftDrawerOpen,
+      toggleLeftDrawer () {
+        leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+
+      rightDrawerOpen,
+      toggleRightDrawer () {
+        rightDrawerOpen.value = !rightDrawerOpen.value
+      }
     }
+  }
 }
 </script>
