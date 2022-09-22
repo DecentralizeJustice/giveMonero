@@ -1,66 +1,41 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <div class="q-pa-md row items-center back">
+    <q-card class="my-card bg-secondary text-white">
+      <q-card-section>
+        <div class="text-h6">Our Changing Planet</div>
+        <div class="text-subtitle2">by John Doe</div>
+      </q-card-section>
 
-    <q-header elevated class="bg-primary text-white" height-hint="98">
-      <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+      <q-card-section>
+        {{ lorem }}
+      </q-card-section>
 
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          Give Monero
-        </q-toolbar-title>
+      <q-separator dark />
 
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
-      <!-- drawer content -->
-    </q-drawer>
-
-    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
-      <!-- drawer content -->
-    </q-drawer>
-
-    <q-page-container>
-
-    </q-page-container>
-
-    <q-footer elevated class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-          </q-avatar>
-          <div>Title</div>
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-footer>
-
-  </q-layout>
+      <q-card-actions>
+        <q-btn flat>Action 1</q-btn>
+        <q-btn flat>Action 2</q-btn>
+      </q-card-actions>
+    </q-card>
+  </div>
 </template>
 
 <script>
-import { ref } from 'vue'
-
 export default {
   setup () {
-    const leftDrawerOpen = ref(false)
-    const rightDrawerOpen = ref(false)
-
     return {
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      },
-
-      rightDrawerOpen,
-      toggleRightDrawer () {
-        rightDrawerOpen.value = !rightDrawerOpen.value
-      }
+      lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     }
   }
 }
 </script>
+
+<style lang="sass" scoped>
+.my-card
+  width: 100%
+  height: 50vh
+.back
+  background-color: coral
+  height: 90vh
+
+</style>
